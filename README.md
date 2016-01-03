@@ -2,3 +2,12 @@
 
 Welcome to NavyHook
 ===================
+
+**Navyhook** is a tool written in golang that lets you run scripts triggered by github (webhook)
+
+
+----------
+
+
+Templates
+-------------
