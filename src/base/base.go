@@ -1,19 +1,19 @@
 package base
 import (
-	"github.com/andrepinto/navyhook/src/base/models"
-	"github.com/andrepinto/navyhook/_vendor/src/github.com/spf13/viper"
-
+	"github.com/andrepinto/navyhook/src/database"
+	"fmt"
 )
 
-func GetAllRepositoriesConfig() basemodels.Repositories{
-	var C basemodels.Repositories
+func GetAllRepositoriesConfig() []database.Repository{
+	/*var C database.Repositories
 	viper.UnmarshalKey("repositories", &C)
-	return C
+	return C*/
+	return database.GetAllRepositories()
 }
 
-func GetRepositoryConfig(name string) basemodels.CRepo{
+func GetRepositoryConfig(name string) database.Repository{
 	repos := GetAllRepositoriesConfig()
-	var rp basemodels.CRepo
+	var rp database.Repository
 	for _, repo := range repos{
 		if repo.Name == name{
 			rp = repo
@@ -24,9 +24,9 @@ func GetRepositoryConfig(name string) basemodels.CRepo{
 	return rp
 }
 
-func GetRepoHook(name, hook string) basemodels.Hook{
+func GetRepoHook(name, hook string) database.Hook{
 
-	var hk basemodels.Hook
+	var hk database.Hook
 
 	rp := GetRepositoryConfig(name)
 
@@ -47,7 +47,7 @@ func CheckRepoHook(name, hook string) bool{
 	rst := false
 
 	rp := GetRepositoryConfig(name)
-
+  	fmt.Println(rp)
 	hks := rp.Hooks
 	for _, hck := range hks{
 		if hck.Name == hook{

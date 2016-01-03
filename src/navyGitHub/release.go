@@ -5,16 +5,28 @@ import (
 	"os"
 	"github.com/andrepinto/navyhook/src/generator"
 	"github.com/andrepinto/navyhook/src/base"
-	"errors"
+	"github.com/andrepinto/navyhook/src/database"
 )
 
 const(
 	ZIP = ".zip"
 	RELEASE = "release"
+	PRE_RELEASE = "prerelease"
 )
 
 
 func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
+
+	x := database.Action{
+		Repository:releaseBuildInfo.RepositoryData.Name,
+		Event: map[bool]string{true: PRE_RELEASE, false: RELEASE} [releaseBuildInfo.ReleaseData.Prerelease],
+		UserName: releaseBuildInfo.UserData.Login,
+		AvatarURL: releaseBuildInfo.UserData.AvatarUrl,
+		Info:fmt.Sprintf("%s",releaseBuildInfo.ReleaseData.TagName),
+	}
+
+	x.Save()
+
 
 	repoHookConfig := base.GetRepoHook(releaseBuildInfo.RepositoryData.Name, RELEASE)
 
@@ -28,16 +40,22 @@ func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
 	_, err := os.OpenFile(path,os.O_RDWR, os.FileMode(0666))
 
 	if err != nil {
-		panic(err)
+		x.OnError(err.Error())
+		return err
 	}
 
-	_, name :=Unzip(path, workspace)
+	err, name :=Unzip(path, workspace)
 
+	if err != nil {
+		x.OnError(err.Error())
+		return err
+	}
 
 	prjNavyFolder := fmt.Sprintf("%s/%s%s", workspace, name, base.NAVY_HOOK_FOLDER)
 
 	if _, err := os.Stat(prjNavyFolder); os.IsNotExist(err) {
-		return errors.New("navyhook: navyhook folder not exist")
+		x.OnError(err.Error())
+		return err
 	}
 
 	var tmpl, cmd string
@@ -51,11 +69,20 @@ func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
 	}
 
 
-	generator.WriteTemplate(releaseBuildInfo, tmpl, cmd)
+	err = generator.WriteTemplate(releaseBuildInfo, tmpl, cmd)
 
-	result, _ := base.RunUnixCommand(cmd)
+	if err != nil {
+		x.OnError(err.Error())
+		return err
+	}
 
-	fmt.Println(result)
+	var result string
+
+	if(repoHookConfig.Exec){
+		result, _ = base.RunUnixCommand(cmd)
+	}
+
+	x.OnSuccess(result)
 
 	if repoHookConfig.RemoveFolder {
 		os.RemoveAll(fmt.Sprintf("%s/%s", workspace, name))

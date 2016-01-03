@@ -8,6 +8,9 @@ Welcome to NavyHook
 
 ----------
 
+Workflow
+-------------
+
 
 Templates
 -------------

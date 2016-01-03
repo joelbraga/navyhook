@@ -3,9 +3,9 @@ import (
 	"net/http"
 	"io/ioutil"
 	"encoding/json"
-	"github.com/andrepinto/navyhook/src/models"
 	"github.com/andrepinto/navyhook/src/navyGitHub"
 	"github.com/andrepinto/navyhook/src/base"
+	"github.com/andrepinto/navyhook/src/base/models"
 )
 
 const(

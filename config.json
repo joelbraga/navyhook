@@ -3,28 +3,6 @@
   "version":"1.0.0",
   "port": "4000",
   "gitHubToken":"9a51ca2d8407b4f99c4f5bbaa4ef4292334463fd",
-  "workspace":"/Users/andrepinto/Documents/labs/wrk",
-  "repositories":[
-    {
-      "name":"AndroidRest",
-      "hooks":[
-        {
-          "name":"release",
-          "exec":true,
-          "removefolder":true
-        }
-      ]
-    },
-    {
-      "name":"AndroidService",
-      "hooks":[
-        {
-          "name":"release",
-          "exec":true,
-          "removefolder":true,
-          "navyfolder":""
-        }
-      ]
-    }
-  ]
+  "workspace":"/Users/andrepinto/Documents/labs/wrk"
+
 }

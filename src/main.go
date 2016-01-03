@@ -6,10 +6,12 @@ import(
 	"log"
 	"github.com/andrepinto/navyhook/src/api"
 	"github.com/andrepinto/navyhook/_vendor/src/github.com/spf13/viper"
+	//"github.com/andrepinto/navyhook/src/database"
 )
 
-func main()  {
 
+func init(){
+	fmt.Println("INIT")
 	//LOAD CONFIG
 	viper.SetConfigName("config")
 	viper.AddConfigPath(".")
@@ -18,6 +20,10 @@ func main()  {
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
+
+}
+
+func main()  {
 
 	port := viper.GetString("port")
 

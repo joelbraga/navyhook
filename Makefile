@@ -47,6 +47,8 @@ vendor_get: vendor_clean
 	github.com/spf13/viper \
 	github.com/google/go-github/github \
 	github.com/nareix/curl \
+	github.com/mattn/go-sqlite3 \
+	github.com/jinzhu/gorm \
 
 vendor_update: vendor_get
 	rm -rf `find ./_vendor/src -type d -name .git` \
