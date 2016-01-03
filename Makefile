@@ -26,6 +26,9 @@ lint:
 run: build
 	./bin/main
 
+_run:
+	./bin/main
+
 test:
 	go test ./src/...
 
@@ -41,7 +44,9 @@ vendor_clean:
 vendor_get: vendor_clean
 	GOPATH=${PWD}/_vendor go get -d -u -v \
 	github.com/gorilla/mux \
-	github.com/gorilla/schema \
+	github.com/spf13/viper \
+	github.com/google/go-github/github \
+	github.com/nareix/curl \
 
 vendor_update: vendor_get
 	rm -rf `find ./_vendor/src -type d -name .git` \

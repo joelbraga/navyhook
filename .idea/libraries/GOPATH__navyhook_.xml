@@ -12,6 +12,7 @@
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/go/callgraph/cha/testdata" />
       <root url="file://$USER_HOME$/go/src/github.com/fsouza/go-dockerclient/.git" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/go/callgraph/rta/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/.git" />
       <root url="file://$PROJECT_DIR$/../../gorilla/mux/.git" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/go/gcimporter/testdata" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/refactor/eg/testdata" />
@@ -28,11 +29,15 @@
       <root url="file://$USER_HOME$/go/src/github.com/docker/docker/docs/reference/api/_static" />
       <root url="file://$PROJECT_DIR$/../../gorilla/context/.git" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/cmd/stringer/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/oauth2/.git" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/cmd/callgraph/testdata" />
       <root url="file://$USER_HOME$/go/src/github.com/docker/docker/hack/make/.build-deb" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/oauth2/google/testdata" />
       <root url="file://$PROJECT_DIR$/_vendor" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/http2/testdata" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/cmd/fiximports/testdata" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/oracle/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/html/testdata" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/go/pointer/testdata" />
       <root url="file://$USER_HOME$/go/src/github.com/fsouza/go-dockerclient/external/github.com/docker/docker/pkg/archive/testdata" />
       <root url="file://$PROJECT_DIR$/.git" />
@@ -43,6 +48,7 @@
       <root url="file://$PROJECT_DIR$/.idea" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/tools/cmd/vet/testdata" />
       <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/html/charset/testdata" />
       <root url="file://$USER_HOME$/go/src/github.com/docker/docker/.git" />
       <root url="file://$USER_HOME$/go/src/github.com/samalba/dockerclient/.git" />
       <root url="file://$USER_HOME$/go/src/github.com/docker/docker/pkg/tarsum/testdata" />
