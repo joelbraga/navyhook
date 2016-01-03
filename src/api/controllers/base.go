@@ -4,7 +4,6 @@ package api
 import (
 	"net/http"
 	"encoding/json"
-	"github.com/andrepinto/navyhook/_vendor/src/github.com/spf13/viper"
 	"github.com/andrepinto/navyhook/src/base"
 	"github.com/andrepinto/navyhook/src/api/models"
 )
@@ -12,8 +11,8 @@ import (
 func ShowApiVersion(w http.ResponseWriter, r *http.Request)  {
 
 	api := models.Api{
-		Name: viper.GetString("name"),
-		Version: viper.GetString("version"),
+		Name: base.GetConfig().Name,
+		Version: base.GetConfig().Version,
 	}
 
 	json.NewEncoder(w).Encode(api)

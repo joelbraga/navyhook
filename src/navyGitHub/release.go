@@ -1,7 +1,6 @@
 package navyGitHub
 import (
 	"fmt"
-	"github.com/andrepinto/navyhook/_vendor/src/github.com/spf13/viper"
 	"os"
 	"github.com/andrepinto/navyhook/src/generator"
 	"github.com/andrepinto/navyhook/src/base"
@@ -30,7 +29,7 @@ func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
 
 	repoHookConfig := base.GetRepoHook(releaseBuildInfo.RepositoryData.Name, RELEASE)
 
-	workspace := fmt.Sprintf("%s/%s", viper.GetString("workspace"), releaseBuildInfo.RepositoryData.Name)
+	workspace := fmt.Sprintf("%s/%s", base.GetConfig().Workspace, releaseBuildInfo.RepositoryData.Name)
 	os.Mkdir(workspace, 0700)
 
 	path := fmt.Sprintf("%s/%d%s", workspace, releaseBuildInfo.ReleaseData.ID,ZIP)

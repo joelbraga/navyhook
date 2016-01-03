@@ -2,7 +2,7 @@ package api
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
+	"github.com/andrepinto/navyhook/_vendor/src/github.com/gorilla/mux"
 )
 
 func ApiRouter() *mux.Router {

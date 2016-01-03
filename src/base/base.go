@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+const(
+	NAVYHOOK = "navyhook"
+)
+
 func GetAllRepositoriesConfig() []database.Repository{
 	/*var C database.Repositories
 	viper.UnmarshalKey("repositories", &C)
@@ -59,3 +63,7 @@ func CheckRepoHook(name, hook string) bool{
 	return rst
 }
 
+
+func GetConfig() database.Configuration{
+	return database.GetConfigurationByName(NAVYHOOK)
+}

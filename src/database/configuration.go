@@ -24,6 +24,8 @@ func GetConfigurationByName(name string) Configuration {
 	return cfg
 }
 
+
+
 func(a *Configuration) SaveConfiguration() bool{
 	a.Created = time.Now().Unix()
 	a.Updated = time.Now().Unix()

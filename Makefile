@@ -44,7 +44,6 @@ vendor_clean:
 vendor_get: vendor_clean
 	GOPATH=${PWD}/_vendor go get -d -u -v \
 	github.com/gorilla/mux \
-	github.com/spf13/viper \
 	github.com/google/go-github/github \
 	github.com/nareix/curl \
 	github.com/mattn/go-sqlite3 \

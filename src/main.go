@@ -5,27 +5,18 @@ import(
 	"net/http"
 	"log"
 	"github.com/andrepinto/navyhook/src/api"
-	"github.com/andrepinto/navyhook/_vendor/src/github.com/spf13/viper"
 	//"github.com/andrepinto/navyhook/src/database"
+	"github.com/andrepinto/navyhook/src/base"
 )
 
 
 func init(){
-	fmt.Println("INIT")
-	//LOAD CONFIG
-	viper.SetConfigName("config")
-	viper.AddConfigPath(".")
-
-	err := viper.ReadInConfig()
-	if err != nil {
-		panic(fmt.Errorf("Fatal error config file: %s \n", err))
-	}
 
 }
 
 func main()  {
 
-	port := viper.GetString("port")
+	port := base.GetConfig().Port
 
 	apiRouter := api.ApiRouter()
 
