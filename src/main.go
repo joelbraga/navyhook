@@ -16,12 +16,12 @@ func init(){
 
 func main()  {
 
-	port := base.GetConfig().Port
 
 	apiRouter := api.ApiRouter()
 
 	http.Handle("/", apiRouter)
 
+	port := map[bool]string{true: base.GetConfig().Port, false:"4000"} [len(base.GetConfig().Port)>0]
 	log.Println("start listening port "+port)
 
 	go http.ListenAndServe(":"+port, nil)
