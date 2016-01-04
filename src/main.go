@@ -1,7 +1,7 @@
 package main
 
 import(
-	"fmt"
+	_ "fmt"
 	"net/http"
 	"log"
 	"github.com/andrepinto/navyhook/src/api"
@@ -24,7 +24,7 @@ func main()  {
 	port := map[bool]string{true: base.GetConfig().Port, false:"4000"} [len(base.GetConfig().Port)>0]
 	log.Println("start listening port "+port)
 
-	go http.ListenAndServe(":"+port, nil)
+	 http.ListenAndServe(":"+port, nil)
 
-	fmt.Scanln()
+	//fmt.Scanln()
 }
