@@ -1,6 +1,12 @@
 package navyGitHub
 import "github.com/andrepinto/navyhook/_vendor/src/github.com/google/go-github/github"
 
+
+type TemplateData struct {
+	ReleaseBuildInfo ReleaseBuildInfo
+	Workspace string
+}
+
 type ReleaseBuildInfo struct  {
 	ReleaseData ReleaseData `json:"release_data,omitempty"`
 	UserData UserData `json:"user_data,omitempty"`

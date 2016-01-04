@@ -6,6 +6,7 @@ import (
 	"github.com/andrepinto/navyhook/src/navyGitHub"
 	"github.com/andrepinto/navyhook/src/base"
 	"github.com/andrepinto/navyhook/src/base/models"
+	"fmt"
 )
 
 const(
@@ -31,6 +32,8 @@ func HookReceive(w http.ResponseWriter, r *http.Request){
 func PrepareRelease(body []byte){
 	rls := models.PullRequestEvent{}
 	json.Unmarshal(body, &rls)
+
+	fmt.Println(rls)
 
 	println(base.CheckRepoHook(*rls.Repo.Name, RELEASE))
 

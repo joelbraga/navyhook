@@ -1,0 +1,1 @@
+sudo docker run tlantic/develop-mrs-service-catalog-build:v0.4.3b8

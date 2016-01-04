@@ -34,7 +34,7 @@ func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
 
 	path := fmt.Sprintf("%s/%d%s", workspace, releaseBuildInfo.ReleaseData.ID,ZIP)
 
-	DownloadDoc(releaseBuildInfo.ReleaseData.ZipballURL, path)
+	DownloadDoc(releaseBuildInfo.ReleaseData.ZipballURL, path, base.GetConfig().GitHubToken)
 
 	_, err := os.OpenFile(path,os.O_RDWR, os.FileMode(0666))
 
@@ -50,7 +50,8 @@ func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
 		return err
 	}
 
-	prjNavyFolder := fmt.Sprintf("%s/%s%s", workspace, name, base.NAVY_HOOK_FOLDER)
+	buildFolder := fmt.Sprintf("%s/%s", workspace, name)
+	prjNavyFolder := fmt.Sprintf("%s%s", buildFolder, base.NAVY_HOOK_FOLDER)
 
 	if _, err := os.Stat(prjNavyFolder); os.IsNotExist(err) {
 		x.OnError(err.Error())
@@ -68,7 +69,12 @@ func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
 	}
 
 
-	err = generator.WriteTemplate(releaseBuildInfo, tmpl, cmd)
+	templateData := TemplateData{
+		ReleaseBuildInfo: releaseBuildInfo,
+		Workspace: buildFolder,
+	}
+
+	err = generator.WriteTemplate(templateData, tmpl, cmd)
 
 	if err != nil {
 		x.OnError(err.Error())
@@ -84,7 +90,7 @@ func BuildRelease(releaseBuildInfo ReleaseBuildInfo) error{
 	x.OnSuccess(result)
 
 	if repoHookConfig.RemoveFolder {
-		os.RemoveAll(fmt.Sprintf("%s/%s", workspace, name))
+		os.RemoveAll(buildFolder)
 		os.RemoveAll(path)
 	}
 

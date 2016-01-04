@@ -24,7 +24,10 @@ func GetReleaseDownloadLink(url string) (string, error){
 }
 
 
-func DownloadDoc(url string, fileName string){
+func DownloadDoc(url string, fileName, token string){
+
+	hd := make(http.Header)
+	hd.Add("Authorization", "token "+token)
 	curl.File(
 		url,
 		fileName,
@@ -36,7 +39,7 @@ func DownloadDoc(url string, fileName string){
 		"maxspeed=", 3*1024*1024,
 		"followredirects=", true,
 		"cbinterval=", 0.5, // call the callback 0.5 second
-		"header=", http.Header{"User-Agent": {"curl/7.29.0"}},
+		"header=", hd,
 	)
 
 	fmt.Println("end")
